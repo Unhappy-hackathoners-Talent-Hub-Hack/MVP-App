@@ -39,7 +39,7 @@ struct StatusView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 ColorTheme.lastTheme = defaultTheme
             }
-            viewModel.updatePredictedPrice(model_ADInput(dense_3_input: convertToMLMultiArray(from: [0.1, 0.4, 0.2, 0.4, 0.1, 0.2, 0.3, 0.6, 0.9, 0.10])))
+            viewModel.updatePredictedPrice(model_ADInput(dense_3_input: convertToMLMultiArray(from: [0.1, 0, 0.1, 0.1, 0.1, 0.1, 0, 0, 0.1, 0.1])))
             isStatusChecked = true
         }
         .onDisappear {
@@ -91,7 +91,8 @@ private extension StatusView {
         Button(
             action: {
                 isStatusChecked.toggle()
-                showModal.toggle()
+                //showModal.toggle()
+                viewModel.updatePredictedPrice(model_ADInput(dense_3_input: convertToMLMultiArray(from: [randomNumber, randomNumber, randomNumber, randomNumber, randomNumber, randomNumber, randomNumber, randomNumber, randomNumber, randomNumber])))
             },
             label: { updateButtonTitle }
         )
@@ -106,6 +107,10 @@ private extension StatusView {
                     .stroke(.black, lineWidth: 1.5)
                     .blur(radius: 0.5)
             }
+    }
+    
+    var randomNumber: Double {
+        Double.random(in: 0...1.0)
     }
 }
 
