@@ -1,10 +1,10 @@
 import SwiftUI
 
 @main
-struct MVPAppApp: App {
+struct MVPApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView.preferredColorScheme(.dark)
+            TabBarView()
         }
     }
 }

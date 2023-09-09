@@ -1,12 +1,7 @@
 import SwiftUI
 
 extension View {
-    @ViewBuilder func visibility(_ visibility: TabBarVisibility) -> some View {
-        switch visibility {
-        case .visible:
-            self.transition(.move(edge: .bottom))
-        case .invisible:
-            hidden().transition(.move(edge: .bottom))
-        }
+    func animatableGradient(fromGradient: Gradient, toGradient: Gradient, progress: CGFloat) -> some View {
+        self.modifier(AnimatableGradientModifier(fromGradient: fromGradient, toGradient: toGradient, progress: progress))
     }
 }
